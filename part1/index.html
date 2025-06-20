@@ -9,7 +9,7 @@
         <h1>Dog of the day</h1>
         <div id="app">
             <div class="picture-container">
-                <img src="dogImage.message" alt="Random Dog" style="max-width: 1000px;">
+                <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="max-width: 1000px;">
                 <button type="button" @click="fetchDogImage">Get a new dog</button>
             </div>
         </div>
