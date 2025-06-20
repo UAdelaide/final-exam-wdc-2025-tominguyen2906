@@ -3,11 +3,27 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mysql = require('mysql2/promise');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+// MySQL connection setup
+let db;
+(async () => {
+  try {
+    db = await mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '', // Set your MySQL root password if needed
+      database: 'DogWalkService'
+    });
+  } catch (err) {
+    console.error('Error connecting to MySQL:', err);
+  }
+})();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
