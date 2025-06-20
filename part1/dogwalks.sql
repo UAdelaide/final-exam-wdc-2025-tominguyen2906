@@ -76,3 +76,5 @@ INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, st
 ((SELECT dog_id FROM Dogs WHERE name = 'Rocky'), '2025-06-11 10:00:00', 60, 'Central Park', 'open'),
 ((SELECT dog_id FROM Dogs WHERE name = 'Buddy'), '2025-05-12 11:00:00', 20, 'Riverside', 'open'),
 ((SELECT dog_id FROM Dogs WHERE name = 'Luna'), '2025-05-13 12:00:00', 40, 'Hilltop', 'open');
+
+//this is the test databases that I added to 
