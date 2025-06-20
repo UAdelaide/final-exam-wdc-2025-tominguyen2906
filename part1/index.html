@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Final Exam</title>
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <style>
-            .content-container {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 10px;
-            }
 
-            .side-bar {
-                display: grid;
-                background-color: red;
-            }
+<head>
+    <meta charset="UTF-8">
+    <title>Final Exam</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .content-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
 
-            .picture-container {
-                grid-column: 2/3;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="app">
-            <div class="content-container">
-                <div class="side-bar">
-                    <p>Home</p>
-                    <p>About</p>
-                    <p>Contact</p>
-                </div>
-                
-            <h1>Dog of the day</h1>
-                <div class="picture-container">
-                    <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="max-height: 500px;">
-                    <p v-else>...</p>
-                    <h2 v-if="dogImage">I got this image from: {{ dogImage.message }}</h2>
-                </div>
+        .side-bar {
+            display: grid;
+            background-color: red;
+        }
+
+        .picture-container {
+            grid-column: 2/3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="content-container">
+            <div class="side-bar">
+                <p>Home</p>
+                <p>About</p>
+                <p>Contact</p>
             </div>
+
+            <h1>Dog of the day</h1>
+            <div class="picture-container">
+                <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="max-height: 500px;">
+                <p v-else>...</p>
+                <h2 v-if="dogImage">I got this image from: {{ dogImage.message }}</h2>
+            </div>
+        </div>
+    </div>
 
 
         <script>
-            const {createApp} = Vue;
+            const { createApp } = Vue;
             createApp({
                 data() {
                     return {
@@ -58,5 +61,6 @@
                 },
             }).mount('#app');
         </script>
-    </body>
+</body>
+
 </html>
