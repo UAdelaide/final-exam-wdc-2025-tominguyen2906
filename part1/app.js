@@ -40,7 +40,7 @@ app.use('/users', usersRouter);
 
 app.get('/api/dogs', async (req, res, next) => {
   try {
-    const [dogs] = await db.execute('SELECT Dogs.name, Dogs.size, Users.username AS owner_username FROM Dogs JOIN Users ON Dogs.owner_id = Users.user_id');
+    const [dogs] = await db.execute('SELECT Dogs.name AS dog_name, Dogs.size, Users.username AS owner_username FROM Dogs JOIN Users ON Dogs.owner_id = Users.user_id');
     res.json(dogs);
   } catch (err) {
     next(err);
