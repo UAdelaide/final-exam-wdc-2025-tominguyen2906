@@ -59,15 +59,12 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// POST logout - added to the answer
-router.post('/logout', (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ error: 'Logout failed' });
-    }
-    // Explicitly clear the session cookie
-    res.clearCookie('connect.sid');
-    res.json({ message: 'Logout successful' });
+// POST logout - add to the answer
+router.post('/logout', function (req, res) {
+  res.clearCookie('name');
+  res.clearCookie('expiresAt');
+  req.session.destroy(() => {
+    res.json({ message: 'Logged out' });
   });
 });
 
