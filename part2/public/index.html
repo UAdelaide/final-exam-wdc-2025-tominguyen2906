@@ -51,7 +51,9 @@
           ],
           body: JSON.stringify(user)
         })
-        .then(response => )
+        .then(response => {
+          if (!response.ok) throw response
+        })
       }
     }
     }).mount('#app');
