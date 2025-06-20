@@ -40,7 +40,7 @@ app.use('/users', usersRouter);
 
 app.get('/api/dogs', async (req, res, next) => {
   try {
-    const [dogs] = await db.execute('SELECT name, size, owner_id FROM Dogs');
+    const [dogs] = await db.execute('SELECT name, size, owner_username FROM Dogs');
     res.json(dogs);
   } catch (err) {
     next(err);
