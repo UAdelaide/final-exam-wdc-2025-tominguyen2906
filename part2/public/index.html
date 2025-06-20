@@ -66,9 +66,9 @@
         })
         .catch(error => {
           error.json().then(err => {
-            this.errorMessage = err
-          })
-        })
+            this.errorMessage = err.error || 'Login Failed';
+          });
+        });
       }
     }
     }).mount('#app');
