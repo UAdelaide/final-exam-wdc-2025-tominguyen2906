@@ -69,7 +69,7 @@ INSERT INTO Dogs (owner_id, name, size) VALUES
 ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Buddy', 'small'),
 ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Luna', 'medium');
 
-INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES
+INSERT INTO WalkRatings (request_id, walker_id, owner_id, total_rating, comments) VALUES
 ((SELECT request_id FROM WalkRequests WHERE dog_id = (SELECT dog_id FROM Dogs WHERE name = 'Max')),
 (SELECT user_id FROM Users WHERE username = 'bobwalker'),
 (SELECT user_id FROM Users WHERE username = 'alice123'),
