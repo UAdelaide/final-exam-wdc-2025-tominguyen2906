@@ -7,7 +7,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api/dogs', function(req, res, next) {
-  const dogs = 'SELECT dog_name, size, owner_username FROM Dogs';
+  const dogs = 'SELECT name, size, owner_id FROM Dogs';
+  
 });
 
 module.exports = router;
