@@ -76,21 +76,3 @@ INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, st
 ((SELECT dog_id FROM Dogs WHERE name = 'Rocky'), '2025-06-11 10:00:00', 60, 'Central Park', 'open'),
 ((SELECT dog_id FROM Dogs WHERE name = 'Buddy'), '2025-05-12 11:00:00', 20, 'Riverside', 'open'),
 ((SELECT dog_id FROM Dogs WHERE name = 'Luna'), '2025-05-13 12:00:00', 40, 'Hilltop', 'open');
-
--- Link walkers to walks, mark walks as completed, and add ratings
-
--- Scenario: bobwalker completes two walks and gets rated
--- 1. Walk for Max
-INSERT INTO WalkApplications (request_id, walker_id, status) VALUES (1, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted');
-UPDATE WalkRequests SET status = 'completed' WHERE request_id = 1;
-INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES (1, (SELECT user_id FROM Users WHERE username = 'bobwalker'), (SELECT user_id FROM Users WHERE username = 'alice123'), 4, 'Good walk, but a bit short.');
-
--- 2. Walk for Bella
-INSERT INTO WalkApplications (request_id, walker_id, status) VALUES (2, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted');
-UPDATE WalkRequests SET status = 'completed' WHERE request_id = 2;
-INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES (2, (SELECT user_id FROM Users WHERE username = 'bobwalker'), (SELECT user_id FROM Users WHERE username = 'carol123'), 5, 'Bella had a great time!');
-
--- Scenario: evewalker completes one walk and gets rated
-INSERT INTO WalkApplications (request_id, walker_id, status) VALUES (3, (SELECT user_id FROM Users WHERE username = 'evewalker'), 'accepted');
-UPDATE WalkRequests SET status = 'completed' WHERE request_id = 3;
-INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES (3, (SELECT user_id FROM Users WHERE username = 'evewalker'), (SELECT user_id FROM Users WHERE username = 'davidowner'), 5, 'Eve was fantastic with Rocky!');
