@@ -38,6 +38,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+app.get('/api/dogs', async (req, res, next) => {
+  try {
+    const [dogs] = await db.execute('SELECT name, size, owner_id FROM Dogs');
+    res.json(dogs);
+  } catch (err) {
+    next(err);
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -52,16 +60,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
-});
-
-app.get('/api/dogs', async (req, res, next) => {
-  try {
-    const [dogs] = await db.execute('SELECT name, size, owner_id FROM Dogs');
-    res.json(dogs);
-  } catch (err) {
-    next(err);
-  }
+  res.render('error', { title: 'Error' });
 });
 
 module.exports = app;
