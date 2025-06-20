@@ -49,7 +49,7 @@ app.get('/api/dogs', async (req, res, next) => {
 
 app.get('api/walkrequests/open', async (req, res, next) => {
   try {
-    const [walkRequests]
+    const [walkRequests] = await db.execute('SELECT ')
   }
 })
 
