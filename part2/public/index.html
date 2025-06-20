@@ -55,6 +55,7 @@
             if (!response.ok) throw response;
             return response.json();
           })
+          // 
           .then(data => {
             if (data.user.role === 'owner') {
               window.location.href = 'owner-dashboard.html';
