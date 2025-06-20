@@ -74,6 +74,28 @@
           }
         }
 
+                // added logout function
+        async function logout() {
+          try {
+            const response = await fetch('/api/users/logout', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (!response.ok) {
+              const errorData = await response.json();
+              throw new Error(errorData.error || 'Logout Failed');
+            }
+
+            // Redirect to login page after successful logout
+            window.location.href = '/';
+          } catch (error) {
+            console.error('Logout error:', error);
+            // Still redirect to login page even if logout fails
+            window.location.href = '/';
+          }
+        }
+
         onMounted(() => {
           loadWalkRequests();
         });
