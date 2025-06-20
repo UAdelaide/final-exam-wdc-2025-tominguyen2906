@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api/dogs', function(req, res, next) {
-  res.send("hello");
+  res.json({ "name": "Fido", "age": 3 });
 });
 
 module.exports = router;
