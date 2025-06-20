@@ -55,7 +55,9 @@
           if (!response.ok) throw response;
           return response.json();
         })
-        .then(data => )
+        .then(data => {
+          if(data.user.role === 'owner')
+        })
       }
     }
     }).mount('#app');
