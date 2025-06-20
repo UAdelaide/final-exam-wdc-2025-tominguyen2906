@@ -38,21 +38,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.get('/api/dogs', function(req, res, next) {
-  const dogs = 'SELECT name, size, owner_id FROM Dogs';
-  db.query(dogs, function(err, results) {
-    if (err) {
-      next(err);
-    }
-  });
-});
-
 app.get('/api/dogs', async (req, res) => {
   try {
-    const [books] = await db.execute('SELECT * FROM books');
-    res.json(books);
+    const [dogs] = await db.execute('SELECT name, size, owner_id FROM Dogs');
+    res.json(dogs);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch books' });
+    res.status(500).json({ error: 'Failed to fetch dogs' });
   }
 });
 
