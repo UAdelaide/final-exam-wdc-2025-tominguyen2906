@@ -22,6 +22,8 @@
             grid-column: 2/3;
         }
 
+        
+
         body {
             font-family: 'Comic Sans MS', cursive;
             background-color: beige;
@@ -43,7 +45,7 @@
                 <p>Reviews</p>
             </div>
 
-            <h1>Dog of the day</h1>
+            <h1 class="transition">Dog of the day</h1>
             <div class="picture-container">
                 <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="height: 50px; width: 200px">
                 <p v-else>...</p>
