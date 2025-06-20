@@ -13,15 +13,13 @@
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <p class="lead">Connect with trusted walkers for your beloved dog!</p>
 
-    <p>Username</p>
     <form id="loginForm" @submit.prevent="login">
-      <input type="text" id="username" name="Username" required>
-      <br>
-      <p>Password</p>
-      <input type="password" id="password" name="Your Password" required>
-      <br>
-      <button type="submit">Log In</button>
-      <br>
+      <label for="username" class="form-label">Username</label>
+      <input type="text" id="username" name="Username" class="form-control mb-2" required>
+      <label for="password" class="form-label">Password</label>
+      <input type="password" id="password" name="Your Password" class="form-control mb-2" required>
+      <button type="submit" class="btn btn-primary mb-2">Log In</button>
+      <div v-if="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
     </form>
 
     <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
@@ -40,15 +38,15 @@
       methods: {
         login() {
           const user = {
-            email: document.getElementById('username').value,
-            password: document.getElementById('password').value
+            user: document.getElementById('username').value,
+            pass: document.getElementById('password').value // Use 'pass' as backend expects
           };
           this.errorMessage = '';
 
-          fetch('/api/users/login', {
+          fetch('/users/login', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-type': 'application/json' // Use object, not array
             },
             body: JSON.stringify(user)
           })
@@ -57,9 +55,9 @@
             return response.json();
           })
           .then(data => {
-            if(data.user.role === 'owner') {
+            if (data.user.role === 'owner') {
               window.location.href = 'owner-dashboard.html';
-            } else if(data.user.role === 'walker') {
+            } else if (data.user.role === 'walker') {
               window.location.href = 'walker-dashboard.html';
             } else {
               this.errorMessage = "Unknown user";
