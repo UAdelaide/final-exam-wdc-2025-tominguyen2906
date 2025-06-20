@@ -7,8 +7,10 @@
     </head>
     <body>
         <h1>Dog of the day</h1>
-        <div class="picture-container">
+        <div id="app">
+            <img :src="dogImage" alt="Dog of the day">
         </div>
+    </div>
 
         <script>
             const {createApp} = Vue;
