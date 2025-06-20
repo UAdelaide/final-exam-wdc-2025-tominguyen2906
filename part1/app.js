@@ -58,8 +58,8 @@ app.get('/api/walkrequests/open', async (req, res, next) => {
 
 app.get('/api/walkers/summary', async (req, res, next) => {
   try {
-    const [walkerSumary] = await db.execute('SELECT walker_id, rating, ');
-    res.json(walkRequests);
+    const [walkerSumary] = await db.execute('SELECT walker_id, rating, count(*) as num_walks FROM WalkRatings GROUP BY walker_id');
+    res.json(walkerSumary);
   } catch (err) {
     next(err);
   }
