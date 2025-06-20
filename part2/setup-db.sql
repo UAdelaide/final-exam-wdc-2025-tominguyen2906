@@ -30,7 +30,6 @@ CREATE TABLE WalkRequests (
     FOREIGN KEY (dog_id) REFERENCES Dogs(dog_id)
 );
 
--- Insert test users with simple passwords for testing
 INSERT INTO Users (username, email, password_hash, role) VALUES
 ('alice123', 'alice@example.com', 'password123', 'owner'),
 ('bobwalker', 'bob@example.com', 'password123', 'walker'),
@@ -38,13 +37,11 @@ INSERT INTO Users (username, email, password_hash, role) VALUES
 ('davidowner', 'david@example.com', 'password123', 'owner'),
 ('evewalker', 'eve@example.com', 'password123', 'walker');
 
--- Insert test dogs
 INSERT INTO Dogs (owner_id, name, size) VALUES
 ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium'),
 ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
 ((SELECT user_id FROM Users WHERE username = 'davidowner'), 'Rocky', 'large');
 
--- Insert test walk requests
 INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status) VALUES
 ((SELECT dog_id FROM Dogs WHERE name = 'Max'), '2025-06-10 08:00:00', 30, 'Parklands', 'open'),
 ((SELECT dog_id FROM Dogs WHERE name = 'Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave', 'open'),
