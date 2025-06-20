@@ -44,7 +44,7 @@
 
             <h1>Dog of the day</h1>
             <div class="picture-container">
-                <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="height: 50px; width: 300px">
+                <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="height: 50px; width: 200px">
                 <p v-else>...</p>
                 <p v-if="dogImage">I got this image from: {{ dogImage.message }}</p>
                 <button type="button" @click="fetchDogImage" style="background:blue;color:white;">A link to the image</button>
