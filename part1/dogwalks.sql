@@ -77,7 +77,7 @@ INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, st
 ((SELECT dog_id FROM Dogs WHERE name = 'Buddy'), '2025-05-12 11:00:00', 20, 'Riverside', 'open'),
 ((SELECT dog_id FROM Dogs WHERE name = 'Luna'), '2025-05-13 12:00:00', 40, 'Hilltop', 'open');
 
-//this is the test databases that I added to make the results the same as in the exam
+-- this is the test databases that I added to make the results the same as in the exam
 INSERT INTO WalkApplications (request_id, walker_id, status) VALUES
 (1, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted');
 UPDATE WalkRequests SET status = 'completed' WHERE request_id = 1;
