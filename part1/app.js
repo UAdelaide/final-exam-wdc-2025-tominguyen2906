@@ -39,7 +39,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.get('/api/dogs', async (req, res) => {
+app.get('/api/dogs', async (req, res, next) => {
   try {
     const [dogs] = await db.execute('SELECT name, size, owner_id FROM Dogs');
     res.json(dogs);
