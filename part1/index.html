@@ -9,7 +9,7 @@
         <h1>Dog of the day</h1>
         <div id="app">
             <div class="picture-container">
-                <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="max-width: 500px;">
+                <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="max-height: 500px;">
                 <p v-else>...</p>
                 <h2 v-if="dogImage">I got this image from: {{ dogImage.message }}</h2>
             </div>
