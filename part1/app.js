@@ -49,7 +49,7 @@ app.get('/api/dogs', async (req, res, next) => {
 
 app.get('/api/walkrequests/open', async (req, res, next) => {
   try {
-    const [walkRequests] = await db.execute('SELECT WalkRequests.request_id, Dogs.name, WalkRequests.requested_time, WalkRequests.duration_minutes, WalkRequests.location, Users.username AS owner_username FROM WalkRequests WHERE status = "open"');
+    const [walkRequests] = await db.execute('SELECT WalkRequests.request_id, Dogs.name AS dog_name, WalkRequests.requested_time, WalkRequests.duration_minutes, WalkRequests.location, Users.username AS owner_username FROM WalkRequests JOIN Dogs ON WalkRequests.dog_id = Dogs.dog_id JOIN Users ON Dogs.owner_id = Users.user_id WHERE WalkRequests.status = "open"');
     res.json(walkRequests);
   } catch (err) {
     next(err);
