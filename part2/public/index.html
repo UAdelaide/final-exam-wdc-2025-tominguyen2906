@@ -36,14 +36,14 @@
         };
       },
       methods: {
-        // this is the login function 
+        // this is the login function
         login() {
           const user = {
             username: document.getElementById('username').value,
             password: document.getElementById('password').value
           };
           this.errorMessage = '';
-
+        // fetching...
           fetch('/api/users/login', {
             method: 'POST',
             headers: {
