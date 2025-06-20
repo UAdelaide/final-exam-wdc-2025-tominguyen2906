@@ -21,7 +21,7 @@ let db;
       database: 'DogWalkService'
     });
   } catch (err) {
-    console.error('Error connecting to MySQL:', err);
+
   }
 })();
 
