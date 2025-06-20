@@ -58,7 +58,7 @@ app.get('/api/walkrequests/open', async (req, res, next) => {
 
 app.get('/api/walkers/summary', async (req, res, next) => {
   try {
-    const [walkerSumary] = await db.execute('SELECT walker');
+    const [walkerSumary] = await db.execute('SELECT walker_id, ');
     res.json(walkRequests);
   } catch (err) {
     next(err);
