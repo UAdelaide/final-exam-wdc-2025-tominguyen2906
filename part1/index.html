@@ -36,7 +36,7 @@
             <div class="picture-container">
                 <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="max-height: 500px;">
                 <p v-else>...</p>
-                <h2 v-if="dogImage">I got this image from: {{ dogImage.message }}</h2>
+                <p v-if="dogImage">I got this image from: {{ dogImage.message }}</p>
             </div>
         </div>
     </div>
