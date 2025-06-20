@@ -45,7 +45,6 @@ app.get('/api/dogs', async (req, res, next) => {
     res.json(dogs);
   } catch (err) {
     next(err);
-    res.status(500).json({ error: 'Failed to fetch dogs' });
   }
 });
 
