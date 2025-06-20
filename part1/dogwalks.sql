@@ -80,7 +80,7 @@ INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, st
 -- this is the test databases that I added to make the results the same as in the exam
 INSERT INTO WalkApplications (request_id, walker_id, status) VALUES
 (1, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted');
-UPDATE WalkRequests SET status = 'completed' WHERE request_id = 2;
+UPDATE WalkRequests SET status = 'completed' WHERE request_id = 1;
 
 INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES
 (1, (SELECT user_id FROM Users WHERE username = 'bobwalker'),
