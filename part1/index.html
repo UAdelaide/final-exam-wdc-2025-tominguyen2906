@@ -9,50 +9,9 @@
         <h1>Dog of the day</h1>
         <div id="app">
             <div class="picture-container">
-                <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="max-width: 400px;">
-                <p v-else>Loading...</p>
+                <img src="dogImage.message" alt="Random Dog" style="max-width: 1000px;">
             </div>
-            <button @click="fetchDogImage">Get Another Dog</button>
         </div>
-
-        <script>
-            const { createApp } = Vue;
-            createApp({
-                data() {
-                    return {
-                        dogImage: null,
-                    };
-                },
-                methods: {
-                    async fetchDogImage() {
-                        const response = await fetch('https://dog.ceo/api/breeds/image/random');
-                        this.dogImage = await response.json();
-                    }
-                },
-                mounted() {
-                    this.fetchDogImage();
-                }
-            }).mount('#app');
-        </script>
-    </body>
-    </html>
-    How it works:
-
-    The Vue app is mounted to #app.
-
-    The image is displayed using v-if="dogImage" and the URL is accessed with dogImage.message.
-
-    A button allows you to fetch a new random dog image.
-
-    Just copy, save, and open in your browser!
-
-    Related
-    How can I display the fetched dog image in my HTML using Vue
-    What changes are needed to show the dog image inside the picture container
-    How do I bind the dogImage URL to an img tag in Vue
-    Can I add a button to fetch and display a new dog image easily
-    How do I ensure the image updates automatically when dogImage data changes
-
 
         <script>
             const {createApp} = Vue;
