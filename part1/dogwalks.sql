@@ -74,6 +74,8 @@ INSERT INTO WalkRatings (request_id, walker_id, owner_id, total_rating, average_
 (SELECT user_id FROM Users WHERE username = 'bobwalker'),
 (SELECT user_id FROM Users WHERE username = 'alice123'),
 5,
+5,
+1,
 'Great walker!');
 
 
