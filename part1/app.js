@@ -38,4 +38,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.get('/api/dogs', function(req, res, next) {
+  const dogs = 'SELECT name, size, owner_id FROM Dogs';
+  db.query(dogs, function(err, results) {
+    if (err) {
+      next(err);
+    }
+  });
+});
+
 module.exports = app;
