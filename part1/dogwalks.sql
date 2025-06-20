@@ -81,3 +81,7 @@ INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, st
 INSERT INTO WalkApplications (request_id, walker_id, status) VALUES
 (1, (SELECT user_id FROM Users WHERE username = 'bobwalker'), 'accepted');
 UPDATE WalkRequests SET status = 'completed' WHERE request_id = 1;
+
+INSERT INTO WalkRatings (request_id, walker_id, owner_id, rating, comments) VALUES
+(1, (SELECT user_id FROM Users WHERE username = 'bobwalker'),
+(SELECT user_id FROM Users WHERE username = 'alice123'), 4, 'Good walk');
