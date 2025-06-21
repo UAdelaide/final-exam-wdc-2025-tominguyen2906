@@ -38,12 +38,7 @@
       <div v-if="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
     </form>
     <h1>All Registered Dogs</h1>
-            <div class="picture-container">
-                <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="height: 50px; width: 200px">
-                <p v-else>...</p>
-                <p v-if="dogImage">I got this image from: {{ dogImage.message }}</p>
-                <button type="button" @click="fetchDogImage" style="background:blue;color:white;">A link to the image</button>
-            </div>
+    <table></table>
     <!-- <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
     <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a> -->
   </div>
