@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET all dogs
+// GET all dogs, numeric ordered
 router.get('/dogs', async (req, res) => {
   try {
     const [rows] = await db.query(`
