@@ -54,7 +54,7 @@
             <td>{{ dog.name }}</td>
             <td>{{ dog.size }}</td>
             <td>{{ dog.owner_id }}</td>
-            <td><img :src="dog.photo" alt="Dog Photo"></td>
+            <td><img :src="dog.photo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Dog Photo"></td>
           </tr>
         </tbody>
       </table>
@@ -68,7 +68,8 @@
       data() {
         return {
           message: 'Welcome to the Dog Walking Service!',
-          errorMessage: ''
+          errorMessage: '',
+          dogs: []
         };
       },
       methods: {
@@ -109,10 +110,29 @@
         async fetchDogImage() {
           const response = await fetch('https://dog.ceo/api/breeds/image/random');
           this.dogImage = await response.json();
+        },
+        async fetchDogs() {
+          try {
+            const response = await fetch('/api/walks/dogs');
+            if (!response.ok) throw new Error('Failed to fetch dogs');
+            const dogsData = await response.json();
+
+            // Assign random dog images to each dog
+            for (let dog of dogsData) {
+              const imageResponse = await fetch('https://dog.ceo/api/breeds/image/random');
+              const imageData = await imageResponse.json();
+              dog.photo = imageData.message;
+            }
+
+            this.dogs = dogsData;
+          } catch (error) {
+            console.error('Error fetching dogs:', error);
+          }
         }
       },
       mounted() {
         this.fetchDogImage();
+        this.fetchDogs();
       },
     }).mount('#app');
   </script>

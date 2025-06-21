@@ -19,6 +19,20 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET all dogs
+router.get('/dogs', async (req, res) => {
+  try {
+    const [rows] = await db.query(`
+      SELECT dog_id, name, size, owner_id
+      FROM Dogs
+      ORDER BY name
+    `);
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch dogs' });
+  }
+});
+
 // POST a new walk request (from owner)
 router.post('/', async (req, res) => {
   const { dog_id, requested_time, duration_minutes, location } = req.body;
