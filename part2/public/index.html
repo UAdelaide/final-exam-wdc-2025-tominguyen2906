@@ -75,7 +75,11 @@
           } catch (error) {
             this.errorMessage = error.message || 'Login Failed';
           }
-        }
+        },
+        async fetchDogImage() {
+                        const response = await fetch('https://dog.ceo/api/breeds/image/random');
+                        this.dogImage = await response.json();
+                              }
       }
     }).mount('#app');
   </script>
