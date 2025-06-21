@@ -2,6 +2,23 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 
+// GET dogs owned by the current user (owner)
+router.get('/my-dogs', async (req, res) => {
+  try {
+    // For now, we'll get all dogs. In a real app, you'd filter by req.session.user.user_id
+    const [rows] = await db.query(`
+      SELECT d.dog_id, d.name, d.size
+      FROM Dogs d
+      JOIN Users u ON d.owner_id = u.user_id
+      WHERE u.role = 'owner'
+    `);
+    res.json(rows);
+  } catch (error) {
+    console.error('SQL Error:', error);
+    res.status(500).json({ error: 'Failed to fetch dogs' });
+  }
+});
+
 // GET all walk requests (for walkers to view)
 router.get('/', async (req, res) => {
   try {
