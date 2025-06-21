@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET dogs by owner
+// GET dogs by owner (add to the answer)
 router.get('/dogs/:ownerId', async (req, res) => {
   try {
     const [rows] = await db.query(`
