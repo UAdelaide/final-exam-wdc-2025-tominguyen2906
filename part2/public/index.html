@@ -37,7 +37,7 @@
       <button type="submit" class="btn btn-primary mb-2">Log In</button>
       <div v-if="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
     </form>
-    <h1 class="flash">All Registered Dogs</h1>
+    <h1>All Registered Dogs</h1>
             <div class="picture-container">
                 <img v-if="dogImage" :src="dogImage.message" alt="Random Dog" style="height: 50px; width: 200px">
                 <p v-else>...</p>
