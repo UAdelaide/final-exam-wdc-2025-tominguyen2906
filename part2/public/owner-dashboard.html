@@ -89,9 +89,23 @@
         const error = ref('');
         const userDogs = ref([]);
 
+        async function getCurrentUser() {
+          try {
+            const res = await fetch('/api/users/me');
+            if (!res.ok) throw new Error('Failed to get current user');
+            return await res.json();
+          } catch (err) {
+            error.value = 'Failed to get current user';
+            return null;
+          }
+        }
+
         async function loadUserDogs() {
           try {
-            const res = await fetch('/api/users/my-dogs');
+            const currentUser = await getCurrentUser();
+            if (!currentUser) return;
+
+            const res = await fetch(`/api/walks/dogs/${currentUser.user_id}`);
             if (!res.ok) throw new Error('Failed to load user dogs');
             userDogs.value = await res.json();
           } catch (err) {
