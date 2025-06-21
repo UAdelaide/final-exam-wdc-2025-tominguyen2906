@@ -82,7 +82,7 @@
           try {
             const res = await fetch('/api/users/me');
             if (!res.ok) throw new Error('Cannot get user');
-            const user = await
+            const user = await res.json()
           }
 
         // added logout function
