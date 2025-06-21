@@ -74,6 +74,7 @@
         }
 
         async function applyToWalk(requestId) {
+          // if the user is not loaded, return an error
           if (!currentUser.value) {
             error.value = 'User not loaded';
             return;
