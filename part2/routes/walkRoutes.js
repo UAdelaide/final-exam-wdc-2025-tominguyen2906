@@ -25,7 +25,7 @@ router.get('/dogs', async (req, res) => {
     const [rows] = await db.query(`
       SELECT dog_id, name, size, owner_id
       FROM Dogs
-      ORDER BY name
+      ORDER BY dog_id ASC
     `);
     res.json(rows);
   } catch (error) {
