@@ -87,6 +87,17 @@
         const walks = ref([]);
         const message = ref('');
         const error = ref('');
+        const userDogs = ref([]);
+
+        async function loadUserDogs() {
+          try {
+            const res = await fetch('/api/users/my-dogs');
+            if (!res.ok) throw new Error('Failed to load user dogs');
+            userDogs.value = await res.json();
+          } catch (err) {
+            error.value = 'Failed to load your dogs';
+          }
+        }
 
         async function loadWalks() {
           try {
@@ -146,6 +157,7 @@
 
         onMounted(() => {
           loadWalks();
+          loadUserDogs();
         });
 
         return {
@@ -154,7 +166,8 @@
           message,
           error,
           submitWalkRequest,
-          logout
+          logout,
+          userDogs
         };
       }
     }).mount('#app');
