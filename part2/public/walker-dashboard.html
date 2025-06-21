@@ -82,8 +82,13 @@
           try {
             const res = await fetch('/api/users/me');
             if (!res.ok) throw new Error('Cannot get user');
-            const user = await res.json()
+            const user = await res.json();
+            return user;
+          } catch (err) {
+            error.value = err.message;
+            return null;
           }
+        }
 
         // added logout function
         async function logout() {
