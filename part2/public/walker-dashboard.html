@@ -81,7 +81,8 @@
         async function getCurrentUser() {
           try {
             const res = await fetch('/api/users/me');
-            if (!res.ok) throw new Error('')
+            if (!res.ok) throw new Error('Cannot get user');
+            const user = await
           }
 
         // added logout function
