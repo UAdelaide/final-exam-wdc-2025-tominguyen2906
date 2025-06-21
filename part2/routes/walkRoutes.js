@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 
-// GET dogs owned by the current user (owner)
+// GET dogs owned by the current user (add to )
 router.get('/my-dogs', async (req, res) => {
   try {
     // For now, we'll get all dogs. In a real app, you'd filter by req.session.user.user_id
