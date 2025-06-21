@@ -19,20 +19,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET dogs by owner (add to the answer)
-router.get('/dogs/:ownerId', async (req, res) => {
-  try {
-    const [rows] = await db.query(`
-      SELECT dog_id, name, size
-      FROM Dogs
-      WHERE owner_id = ?
-      ORDER BY name
-    `, [req.params.ownerId]);
-    res.json(rows);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch dogs' });
-  }
-});
 
 // POST a new walk request (from owner)
 router.post('/', async (req, res) => {
